@@ -7,6 +7,7 @@
 
 class UTankAimingComponent;
 class UTankTorret;
+class AProjectile;
 class UTankBarrel; // Forward declaretion
 
 UCLASS()
@@ -21,7 +22,10 @@ public:
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
-		void SetTorretReference(UTankTorret* TorretToSet);
+	void SetTorretReference(UTankTorret* TorretToSet);
+
+	UFUNCTION(BlueprintCallable, Category = Input)
+	void Fire();
 
 protected:
 	// Called when the game starts or when spawned
@@ -39,4 +43,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 100000; // speed of 100m/s
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBP;
+
+	UTankBarrel* Barrel = nullptr;
 };

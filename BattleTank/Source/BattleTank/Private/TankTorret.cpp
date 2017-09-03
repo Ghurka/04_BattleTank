@@ -3,9 +3,6 @@
 #include "BattleTank.h"
 #include "TankTorret.h"
 
-
-
-
 void UTankTorret::Rotate(float RelativeSpeed)
 {
 	RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1, 1);
